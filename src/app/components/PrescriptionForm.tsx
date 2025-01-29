@@ -41,7 +41,29 @@ const PrescriptionForm = () => {
       return;
     }
 
-  
+    setLoading(true);
+    setProgress(0);
+
+    // Simulate a prescription creation process
+    for (let i = 0; i <= 100; i += 20) {
+      setTimeout(() => {
+        setProgress(i);
+      }, i * 100);
+    }
+
+    // Simulate a delay for the prescription creation
+    setTimeout(() => {
+      console.log({ patient, doctor, medicine, validityStart, validityEnd });
+      setLoading(false);
+      setProgress(0);
+      // Reset form
+      setPatient('');
+      setDoctor('');
+      setMedicine('');
+      setValidityStart('');
+      setValidityEnd('');
+      setErrors({});
+    }, 600); // Adjust this time as needed
   };
 
   return (
